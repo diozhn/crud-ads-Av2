@@ -21,7 +21,17 @@ public class Usuario {
     @Column(nullable = false, length = 50)
     private String senha;
     
+    @Column(nullable = false, length = 50)
+    private String areaInteresseUsuario;
 
+    public String getAreaInteresseUsuario() {
+        return areaInteresseUsuario;
+    }
+
+    public void setAreaInteresseUsuario(String areaInteresseUsuario) {
+        this.areaInteresseUsuario = areaInteresseUsuario;
+    }
+    
     public int getIdUsuario() {
         return idUsuario;
     }
