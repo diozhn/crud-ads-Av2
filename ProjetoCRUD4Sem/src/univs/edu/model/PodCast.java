@@ -24,6 +24,25 @@ public class PodCast {
     @Column(nullable = false, length = 50)
     private String descriptionPC;
     
+    @Column(nullable = false, length = 250)
+    private String categoriaPC;
+
+    public Usuario getCadastrantePC() {
+        return cadastrantePC;
+    }
+
+    public void setCadastrantePC(Usuario cadastrantePC) {
+        this.cadastrantePC = cadastrantePC;
+    }
+
+    public String getCategoriaPC() {
+        return categoriaPC;
+    }
+
+    public void setCategoriaPC(String categoriaPC) {
+        this.categoriaPC = categoriaPC;
+    }
+    
     @Column(nullable = false, length = 50)
     private String dataPC;
 
