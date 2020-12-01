@@ -8,6 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class PodCast {
     
+    
     @Id
     @GeneratedValue
     private int idPC;
@@ -18,22 +19,37 @@ public class PodCast {
     @Column(nullable = false, length = 50, unique = true)
     private String linkPC;
     
-    @Column(nullable = false, length = 50, unique = true)
-    private Usuario cadastrantePC;
-    
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 250)
     private String descriptionPC;
     
-    @Column(nullable = false, length = 250)
+    @Column(nullable = false, length = 50)
     private String categoriaPC;
+    
+    @Column(nullable = false)
+    private int idCadastrante;
+    
+    @Column(nullable = false, length = 50)
+    private String dataPC;
+    
+    @Column(nullable = false, length = 50)
+    private int avaliacoesPC;
 
-    public Usuario getCadastrantePC() {
-        return cadastrantePC;
+    public int getAvaliacoesPC() {
+        return avaliacoesPC;
     }
 
-    public void setCadastrantePC(Usuario cadastrantePC) {
-        this.cadastrantePC = cadastrantePC;
+    public void setAvaliacoesPC(int avaliacoesPC) {
+        this.avaliacoesPC = avaliacoesPC;
     }
+    
+    public int getIdCadastrante() {
+        return idCadastrante;
+    }
+
+    public void setIdCadastrante(int idCadastrante) {
+        this.idCadastrante = idCadastrante;
+    }
+    
 
     public String getCategoriaPC() {
         return categoriaPC;
@@ -42,9 +58,6 @@ public class PodCast {
     public void setCategoriaPC(String categoriaPC) {
         this.categoriaPC = categoriaPC;
     }
-    
-    @Column(nullable = false, length = 50)
-    private String dataPC;
 
     public int getIdPC() {
         return idPC;
@@ -58,9 +71,10 @@ public class PodCast {
         return nomePC;
     }
 
-    public void setNomePC(String nomePC) {
-        this.nomePC = nomePC;
+    public void setNomePC(String nomePc) {
+        this.nomePC = nomePc;
     }
+
 
     public String getLinkPC() {
         return linkPC;

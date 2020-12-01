@@ -21,8 +21,19 @@ public class Usuario {
     @Column(nullable = false, length = 50)
     private String senha;
     
-    @Column(nullable = false, length = 50)
+    @Column(nullable = true, length = 250)
     private String areaInteresseUsuario;
+    
+    @Column(nullable = false)
+    private Boolean adm;
+
+    public Boolean getAdm() {
+        return adm;
+    }
+
+    public void setAdm(Boolean adm) {
+        this.adm = adm;
+    }
 
     public String getAreaInteresseUsuario() {
         return areaInteresseUsuario;
