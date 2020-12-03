@@ -43,9 +43,11 @@ public class Index extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(26, 24, 34));
         jPanel1.setMaximumSize(null);
+        jPanel1.setPreferredSize(new java.awt.Dimension(900, 500));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/univs/edu/imagens/pc.png"))); // NOI18N
 
