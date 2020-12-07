@@ -25,13 +25,13 @@ public class Usuario {
     private String areaInteresseUsuario;
     
     @Column(nullable = false)
-    private Boolean adm;
+    private int adm;
 
-    public Boolean getAdm() {
+    public int getAdm() {
         return adm;
     }
 
-    public void setAdm(Boolean adm) {
+    public void setAdm(int adm) {
         this.adm = adm;
     }
 

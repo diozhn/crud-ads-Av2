@@ -13,25 +13,25 @@ public class PodCast {
     @GeneratedValue
     private int idPC;
     
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 300)
     private String nomePC;
     
-    @Column(nullable = false, length = 50, unique = true)
+    @Column(nullable = false, length = 300, unique = true)
     private String linkPC;
     
-    @Column(nullable = false, length = 250)
+    @Column(nullable = false, length = 300)
     private String descriptionPC;
     
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 300)
     private String categoriaPC;
     
     @Column(nullable = false)
     private int idCadastrante;
     
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 300)
     private String dataPC;
     
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 300)
     private int avaliacoesPC;
 
     public int getAvaliacoesPC() {

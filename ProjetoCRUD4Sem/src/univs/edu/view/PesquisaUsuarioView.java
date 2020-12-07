@@ -160,7 +160,7 @@ public class PesquisaUsuarioView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Selecione uma linha!");
         }else{
             usuario = repo.pesquisarPorId((int) tabela.getValueAt(linha, 0));
-            LoginView telaUsuario = new LoginView();
+            CadastrarUsuario telaUsuario = new CadastrarUsuario("true");
             telaUsuario.preencherCampos(usuario);
             telaUsuario.setVisible(true);
             dispose();

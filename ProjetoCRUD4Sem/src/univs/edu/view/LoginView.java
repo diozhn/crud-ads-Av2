@@ -120,6 +120,11 @@ public class LoginView extends javax.swing.JFrame {
                 tfLoginActionPerformed(evt);
             }
         });
+        tfLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tfLoginKeyPressed(evt);
+            }
+        });
 
         tfSenha.setBackground(new java.awt.Color(37, 32, 56));
         tfSenha.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -250,9 +255,8 @@ public class LoginView extends javax.swing.JFrame {
     }//GEN-LAST:event_tfLoginActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        CadastrarUsuario tela = new CadastrarUsuario();
+        CadastrarUsuario tela = new CadastrarUsuario("false");
         tela.setVisible(true);
-        dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -263,6 +267,10 @@ public class LoginView extends javax.swing.JFrame {
         tfLogin.setText("");
         tfSenha.setText("");
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void tfLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfLoginKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfLoginKeyPressed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

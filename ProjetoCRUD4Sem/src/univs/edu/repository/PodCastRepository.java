@@ -1,11 +1,14 @@
 package univs.edu.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import univs.edu.model.PodCast;
+import univs.edu.model.Usuario;
 import univs.edu.util.HibernateUtil;
 
 public class PodCastRepository {
@@ -22,7 +25,6 @@ public class PodCastRepository {
             JOptionPane.showMessageDialog(null, "PodCast Cadastrado!");
         } else {
             sessao.update(pc);
-            JOptionPane.showMessageDialog(null, "PodCast Editado");
         }
 
         transacao.commit();
@@ -44,16 +46,51 @@ public class PodCastRepository {
                 = sessao.createCriteria(PodCast.class).list();
         return pc;
     }
-    
-    public PodCast pesquisarPorId(int id){
+
+    public PodCast pesquisarPorId(int id) {
         sessao = HibernateUtil.getSessionFactory().openSession();
         transacao = sessao.beginTransaction();
-        
+
         PodCast pc = (PodCast) sessao.createCriteria(PodCast.class)
                 .add(Restrictions.eq("idPC", id)).uniqueResult();
-        
+
         sessao.close();
         return pc;
     }
+
+    public List<PodCast> pesquisarPorNome(String termo) {
+        sessao = HibernateUtil.getSessionFactory().openSession();
+        transacao = sessao.beginTransaction();
+
+        List<PodCast> pc = sessao.createCriteria(PodCast.class)
+                .add(Restrictions.like("nomePC", "%" + termo + "%")).list();
+
+        sessao.close();
+        return pc;
+    }
+
+    public List<PodCast> listarAvaliados() {
+        List<PodCast> lista = new ArrayList<>();
+            
+        sessao = HibernateUtil.getSessionFactory().openSession();
+        transacao = sessao.beginTransaction();
+        
+        lista = sessao.createCriteria(PodCast.class).addOrder(Order.desc("avaliacoesPC")).list();
+            
+        sessao.close(); 
+        return lista;
+    }
     
+    public List<PodCast> listarRecomendados(Usuario user) {
+        List<PodCast> lista = new ArrayList<>();
+            
+        sessao = HibernateUtil.getSessionFactory().openSession();
+        transacao = sessao.beginTransaction();
+        
+        lista = sessao.createCriteria(PodCast.class).add(Restrictions.eq("categoriaPC", user.getAreaInteresseUsuario())).addOrder(Order.desc("avaliacoesPC")).list();
+            
+        sessao.close(); 
+        return lista;
+    }
+
 }

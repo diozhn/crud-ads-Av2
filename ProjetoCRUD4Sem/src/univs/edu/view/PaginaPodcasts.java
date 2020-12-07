@@ -11,8 +11,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import javax.swing.JOptionPane;
+import univs.edu.model.Avaliacao;
 import univs.edu.model.PodCast;
 import univs.edu.model.Usuario;
+import univs.edu.repository.AvaliacaoRepository;
 import univs.edu.repository.PodCastRepository;
 import univs.edu.repository.UsuarioRepository;
 import univs.edu.util.PodcastUtil;
@@ -28,11 +30,14 @@ public class PaginaPodcasts extends javax.swing.JFrame {
     PodCastRepository repo = new PodCastRepository();
     List<PodCast> pcs = new ArrayList<>();
     List<PodCast> restante = new ArrayList<>();
+    Avaliacao avaliacao = new Avaliacao();
+    AvaliacaoRepository repoAv = new AvaliacaoRepository();
 
-    public PaginaPodcasts(List<PodCast> pc) {
+    public PaginaPodcasts(List<PodCast> pc, Usuario usuario) {
         initComponents();
         this.pcs = pc;
         atualizarPaineis();
+        this.logado = usuario;
     }
 
     public List<String> GetInformacoes(int id) {
@@ -54,8 +59,6 @@ public class PaginaPodcasts extends javax.swing.JFrame {
         List<String> infos = new ArrayList<String>();
         infos = GetInformacoes(0);
         //0= nome, 1= descrição, 2= data, 3= categoria, 4= avaliacoes, 5= postador
-
-        JOptionPane.showMessageDialog(null, pcs.size());
 
         if (pcs.size() >= 1) {
             tfTitulo1.setText(infos.get(0));
@@ -132,6 +135,14 @@ public class PaginaPodcasts extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
+        painel1 = new javax.swing.JPanel();
+        tfPostado1 = new javax.swing.JLabel();
+        tfTitulo1 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        tfAvaliacoes1 = new javax.swing.JLabel();
+        tfCategoria1 = new javax.swing.JLabel();
+        tfData1 = new javax.swing.JLabel();
+        tfDescricao1 = new javax.swing.JLabel();
         painel3 = new javax.swing.JPanel();
         tfTitulo3 = new javax.swing.JLabel();
         jRadioButton3 = new javax.swing.JRadioButton();
@@ -148,14 +159,6 @@ public class PaginaPodcasts extends javax.swing.JFrame {
         tfCategoria2 = new javax.swing.JLabel();
         tfData2 = new javax.swing.JLabel();
         tfDescricao2 = new javax.swing.JLabel();
-        painel1 = new javax.swing.JPanel();
-        tfTitulo1 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        tfPostado1 = new javax.swing.JLabel();
-        tfAvaliacoes1 = new javax.swing.JLabel();
-        tfCategoria1 = new javax.swing.JLabel();
-        tfData1 = new javax.swing.JLabel();
-        tfDescricao1 = new javax.swing.JLabel();
         painel4 = new javax.swing.JPanel();
         tfTitulo4 = new javax.swing.JLabel();
         jRadioButton4 = new javax.swing.JRadioButton();
@@ -173,6 +176,7 @@ public class PaginaPodcasts extends javax.swing.JFrame {
         tfData5 = new javax.swing.JLabel();
         tfDescricao5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -190,9 +194,85 @@ public class PaginaPodcasts extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(37, 34, 43));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 251, 486, 10));
-        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 497, 486, 10));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, 486, 10));
         jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 761, 486, 10));
         jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1025, 486, 10));
+
+        painel1.setBackground(new java.awt.Color(37, 34, 43));
+
+        tfPostado1.setForeground(new java.awt.Color(219, 219, 219));
+        tfPostado1.setText("Postado por:");
+
+        tfTitulo1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        tfTitulo1.setForeground(new java.awt.Color(219, 219, 219));
+        tfTitulo1.setText("Titulo");
+
+        jRadioButton1.setBackground(new java.awt.Color(37, 34, 43));
+        jRadioButton1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jRadioButton1.setForeground(new java.awt.Color(204, 204, 204));
+        jRadioButton1.setText("Avaliar");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
+
+        tfAvaliacoes1.setForeground(new java.awt.Color(219, 219, 219));
+        tfAvaliacoes1.setText("Avaliações:");
+
+        tfCategoria1.setForeground(new java.awt.Color(219, 219, 219));
+        tfCategoria1.setText("Categoria");
+
+        tfData1.setForeground(new java.awt.Color(219, 219, 219));
+        tfData1.setText("Data:");
+
+        tfDescricao1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        tfDescricao1.setForeground(new java.awt.Color(219, 219, 219));
+        tfDescricao1.setText("Descrição");
+
+        javax.swing.GroupLayout painel1Layout = new javax.swing.GroupLayout(painel1);
+        painel1.setLayout(painel1Layout);
+        painel1Layout.setHorizontalGroup(
+            painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painel1Layout.createSequentialGroup()
+                .addGroup(painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painel1Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(tfTitulo1))
+                    .addGroup(painel1Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfPostado1)
+                            .addComponent(tfDescricao1)
+                            .addComponent(tfCategoria1)
+                            .addComponent(tfData1)
+                            .addGroup(painel1Layout.createSequentialGroup()
+                                .addComponent(tfAvaliacoes1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 330, Short.MAX_VALUE)
+                                .addComponent(jRadioButton1)))))
+                .addContainerGap())
+        );
+        painel1Layout.setVerticalGroup(
+            painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tfTitulo1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tfDescricao1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(tfData1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfCategoria1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButton1)
+                    .addComponent(tfAvaliacoes1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tfPostado1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60))
+        );
+
+        jPanel2.add(painel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, 210));
 
         painel3.setBackground(new java.awt.Color(37, 34, 43));
 
@@ -225,10 +305,6 @@ public class PaginaPodcasts extends javax.swing.JFrame {
         painel3.setLayout(painel3Layout);
         painel3Layout.setHorizontalGroup(
             painel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jRadioButton3)
-                .addGap(41, 41, 41))
             .addGroup(painel3Layout.createSequentialGroup()
                 .addGroup(painel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painel3Layout.createSequentialGroup()
@@ -237,12 +313,15 @@ public class PaginaPodcasts extends javax.swing.JFrame {
                     .addGroup(painel3Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addGroup(painel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfAvaliacoes3)
                             .addComponent(tfPostado3)
                             .addComponent(tfCategoria3)
                             .addComponent(tfData3)
-                            .addComponent(tfDescricao3))))
-                .addContainerGap(438, Short.MAX_VALUE))
+                            .addComponent(tfDescricao3)
+                            .addGroup(painel3Layout.createSequentialGroup()
+                                .addComponent(tfAvaliacoes3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 305, Short.MAX_VALUE)
+                                .addComponent(jRadioButton3)))))
+                .addGap(61, 61, 61))
         );
         painel3Layout.setVerticalGroup(
             painel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,7 +343,7 @@ public class PaginaPodcasts extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(painel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, -1, -1));
+        jPanel2.add(painel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, -1, -1));
 
         painel2.setBackground(new java.awt.Color(37, 34, 43));
 
@@ -297,10 +376,6 @@ public class PaginaPodcasts extends javax.swing.JFrame {
         painel2.setLayout(painel2Layout);
         painel2Layout.setHorizontalGroup(
             painel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painel2Layout.createSequentialGroup()
-                .addContainerGap(416, Short.MAX_VALUE)
-                .addComponent(jRadioButton2)
-                .addGap(41, 41, 41))
             .addGroup(painel2Layout.createSequentialGroup()
                 .addGroup(painel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painel2Layout.createSequentialGroup()
@@ -309,12 +384,15 @@ public class PaginaPodcasts extends javax.swing.JFrame {
                     .addGroup(painel2Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addGroup(painel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfAvaliacoes2)
                             .addComponent(tfPostado2)
                             .addComponent(tfCategoria2)
                             .addComponent(tfData2)
-                            .addComponent(tfDescricao2))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(tfDescricao2)
+                            .addGroup(painel2Layout.createSequentialGroup()
+                                .addComponent(tfAvaliacoes2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 320, Short.MAX_VALUE)
+                                .addComponent(jRadioButton2)))))
+                .addGap(46, 46, 46))
         );
         painel2Layout.setVerticalGroup(
             painel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -327,85 +405,16 @@ public class PaginaPodcasts extends javax.swing.JFrame {
                 .addComponent(tfData2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tfCategoria2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addGroup(painel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton2)
-                    .addComponent(tfAvaliacoes2))
+                    .addComponent(tfAvaliacoes2)
+                    .addComponent(jRadioButton2))
                 .addGap(5, 5, 5)
                 .addComponent(tfPostado2)
                 .addContainerGap())
         );
 
-        jPanel2.add(painel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
-
-        painel1.setBackground(new java.awt.Color(37, 34, 43));
-
-        tfTitulo1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        tfTitulo1.setForeground(new java.awt.Color(219, 219, 219));
-        tfTitulo1.setText("Titulo");
-
-        jRadioButton1.setBackground(new java.awt.Color(37, 34, 43));
-        jRadioButton1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jRadioButton1.setForeground(new java.awt.Color(204, 204, 204));
-        jRadioButton1.setText("Avaliar");
-
-        tfPostado1.setForeground(new java.awt.Color(219, 219, 219));
-        tfPostado1.setText("Postado por:");
-
-        tfAvaliacoes1.setForeground(new java.awt.Color(219, 219, 219));
-        tfAvaliacoes1.setText("Avaliações:");
-
-        tfCategoria1.setForeground(new java.awt.Color(219, 219, 219));
-        tfCategoria1.setText("Categoria");
-
-        tfData1.setForeground(new java.awt.Color(219, 219, 219));
-        tfData1.setText("Data:");
-
-        tfDescricao1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        tfDescricao1.setForeground(new java.awt.Color(219, 219, 219));
-        tfDescricao1.setText("Descrição");
-
-        javax.swing.GroupLayout painel1Layout = new javax.swing.GroupLayout(painel1);
-        painel1.setLayout(painel1Layout);
-        painel1Layout.setHorizontalGroup(
-            painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painel1Layout.createSequentialGroup()
-                .addGroup(painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painel1Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(tfTitulo1))
-                    .addGroup(painel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfPostado1)
-                            .addComponent(tfDescricao1)
-                            .addComponent(tfCategoria1)
-                            .addComponent(tfData1)
-                            .addComponent(tfAvaliacoes1))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 315, Short.MAX_VALUE)
-                .addComponent(jRadioButton1))
-        );
-        painel1Layout.setVerticalGroup(
-            painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(tfTitulo1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfDescricao1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addComponent(tfData1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tfCategoria1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(tfAvaliacoes1))
-                .addGap(51, 51, 51)
-                .addComponent(tfPostado1)
-                .addContainerGap())
-        );
-
-        jPanel2.add(painel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        jPanel2.add(painel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, -1));
 
         painel4.setBackground(new java.awt.Color(37, 34, 43));
 
@@ -438,10 +447,6 @@ public class PaginaPodcasts extends javax.swing.JFrame {
         painel4.setLayout(painel4Layout);
         painel4Layout.setHorizontalGroup(
             painel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painel4Layout.createSequentialGroup()
-                .addContainerGap(416, Short.MAX_VALUE)
-                .addComponent(jRadioButton4)
-                .addGap(41, 41, 41))
             .addGroup(painel4Layout.createSequentialGroup()
                 .addGroup(painel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painel4Layout.createSequentialGroup()
@@ -450,12 +455,15 @@ public class PaginaPodcasts extends javax.swing.JFrame {
                     .addGroup(painel4Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addGroup(painel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfAvaliacoes4)
                             .addComponent(tfPostado4)
                             .addComponent(tfCategoria4)
                             .addComponent(tfData4)
-                            .addComponent(tfDescricao4))))
-                .addContainerGap(441, Short.MAX_VALUE))
+                            .addComponent(tfDescricao4)
+                            .addGroup(painel4Layout.createSequentialGroup()
+                                .addComponent(tfAvaliacoes4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 307, Short.MAX_VALUE)
+                                .addComponent(jRadioButton4)))))
+                .addGap(59, 59, 59))
         );
         painel4Layout.setVerticalGroup(
             painel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -477,7 +485,7 @@ public class PaginaPodcasts extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(painel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 770, 550, -1));
+        jPanel2.add(painel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 780, 550, -1));
 
         painel5.setBackground(new java.awt.Color(37, 34, 43));
 
@@ -510,19 +518,18 @@ public class PaginaPodcasts extends javax.swing.JFrame {
         painel5.setLayout(painel5Layout);
         painel5Layout.setHorizontalGroup(
             painel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painel5Layout.createSequentialGroup()
-                .addContainerGap(416, Short.MAX_VALUE)
-                .addComponent(jRadioButton5)
-                .addGap(41, 41, 41))
             .addGroup(painel5Layout.createSequentialGroup()
                 .addGroup(painel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painel5Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addGroup(painel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfAvaliacoes5)
                             .addComponent(tfPostado5)
                             .addComponent(tfCategoria5)
-                            .addComponent(tfData5)))
+                            .addComponent(tfData5)
+                            .addGroup(painel5Layout.createSequentialGroup()
+                                .addComponent(tfAvaliacoes5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 298, Short.MAX_VALUE)
+                                .addComponent(jRadioButton5))))
                     .addGroup(painel5Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addGroup(painel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -530,7 +537,7 @@ public class PaginaPodcasts extends javax.swing.JFrame {
                                 .addGap(6, 6, 6)
                                 .addComponent(tfDescricao5))
                             .addComponent(tfTitulo5))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(68, 68, 68))
         );
         painel5Layout.setVerticalGroup(
             painel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -552,16 +559,27 @@ public class PaginaPodcasts extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(painel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1040, -1, -1));
+        jPanel2.add(painel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1050, -1, -1));
 
         jScrollPane1.setViewportView(jPanel2);
 
         jButton1.setBackground(new java.awt.Color(58, 45, 110));
+        jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(143, 132, 183));
-        jButton1.setText("Voltar");
+        jButton1.setText("Avançar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setBackground(new java.awt.Color(58, 45, 110));
+        jButton2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(143, 132, 183));
+        jButton2.setText("Voltar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -577,24 +595,28 @@ public class PaginaPodcasts extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 181, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(60, 60, 60))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)))
+                .addGap(142, 142, 142))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(69, Short.MAX_VALUE))
+                    .addComponent(jButton2))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -612,7 +634,9 @@ public class PaginaPodcasts extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
         Queue<PodCast> restanteQueue = new LinkedList<>();
+
         for (int i = 0; i < pcs.size(); i++) {
             restanteQueue.offer(pcs.get(i));
         }
@@ -625,21 +649,42 @@ public class PaginaPodcasts extends javax.swing.JFrame {
             restante.add(restanteQueue.poll());
         }
 
-        dispose();
-        PaginaPodcasts tela = new PaginaPodcasts(restante);
-        tela.setVisible(true);
+
+        if (restante.size() == 1) {
+            JOptionPane.showMessageDialog(null, "Sem mais resultados disponíveis!");
+            dispose();
+            new Index(logado).setVisible(true); 
+            
+        } else {
+            dispose();
+            PaginaPodcasts tela = new PaginaPodcasts(restante, logado);
+            tela.setVisible(true);
+
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        Avaliacao av = new Avaliacao();
+        av.setIdPodcast(ABORT);
+        repoAv.salvar(av);
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PaginaPodcasts(null).setVisible(true);
+                new PaginaPodcasts(null, null).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

@@ -6,7 +6,7 @@
     <session-factory>
         <property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost/crud</property>
+        <property name="connection.url">jdbc:mysql://25.110.150.181:80/crud</property>
         <property name="connection.username">root</property>
         <property name="connection.password"></property>
         <property name="show_sql">true</property>
@@ -16,6 +16,7 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
         <mapping class="univs.edu.model.Usuario"/>
         <mapping class="univs.edu.model.PodCast"/>
+        <mapping class="univs.edu.model.Avaliacao"/>
         
         
     </session-factory>
