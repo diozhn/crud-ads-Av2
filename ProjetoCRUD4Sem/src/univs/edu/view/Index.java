@@ -181,10 +181,13 @@ public class Index extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(37, 34, 43));
 
         tfTitulo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        tfTitulo.setForeground(new java.awt.Color(255, 255, 255));
         tfTitulo.setText("Titulo");
 
+        tfDescricao.setForeground(new java.awt.Color(255, 255, 255));
         tfDescricao.setText("Descrição");
 
+        tfPostado.setForeground(new java.awt.Color(255, 255, 255));
         tfPostado.setText("Postado por");
 
         jButton5.setBackground(new java.awt.Color(58, 45, 110));
@@ -240,10 +243,13 @@ public class Index extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(37, 34, 43));
 
         tfTitulo1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        tfTitulo1.setForeground(new java.awt.Color(255, 255, 255));
         tfTitulo1.setText("Titulo");
 
+        tfDescricao1.setForeground(new java.awt.Color(255, 255, 255));
         tfDescricao1.setText("Descrição");
 
+        tfPostado1.setForeground(new java.awt.Color(255, 255, 255));
         tfPostado1.setText("Postado por");
 
         jButton6.setBackground(new java.awt.Color(58, 45, 110));
@@ -294,15 +300,18 @@ public class Index extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel3);
-        jPanel3.setBounds(430, 220, 280, 150);
+        jPanel3.setBounds(430, 220, 266, 146);
 
         jPanel4.setBackground(new java.awt.Color(37, 34, 43));
 
         tfTitulo2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        tfTitulo2.setForeground(new java.awt.Color(255, 255, 255));
         tfTitulo2.setText("Titulo");
 
+        tfDescricao2.setForeground(new java.awt.Color(255, 255, 255));
         tfDescricao2.setText("Descrição");
 
+        tfPostado2.setForeground(new java.awt.Color(255, 255, 255));
         tfPostado2.setText("Postado por");
 
         jButton7.setBackground(new java.awt.Color(58, 45, 110));
@@ -358,10 +367,13 @@ public class Index extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(37, 34, 43));
 
         tfTituloR.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        tfTituloR.setForeground(new java.awt.Color(255, 255, 255));
         tfTituloR.setText("Titulo");
 
+        tfDescricaoR.setForeground(new java.awt.Color(255, 255, 255));
         tfDescricaoR.setText("Descrição");
 
+        tfPostadoR.setForeground(new java.awt.Color(255, 255, 255));
         tfPostadoR.setText("Postado por");
 
         jButton8.setBackground(new java.awt.Color(58, 45, 110));
@@ -412,15 +424,18 @@ public class Index extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel5);
-        jPanel5.setBounds(770, 50, 280, 150);
+        jPanel5.setBounds(770, 50, 266, 146);
 
         jPanel6.setBackground(new java.awt.Color(37, 34, 43));
 
         tfTituloR1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        tfTituloR1.setForeground(new java.awt.Color(255, 255, 255));
         tfTituloR1.setText("Titulo");
 
+        tfDescricaoR1.setForeground(new java.awt.Color(255, 255, 255));
         tfDescricaoR1.setText("Descrição");
 
+        tfPostadoR1.setForeground(new java.awt.Color(255, 255, 255));
         tfPostadoR1.setText("Postado por");
 
         jButton9.setBackground(new java.awt.Color(58, 45, 110));
@@ -471,15 +486,18 @@ public class Index extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel6);
-        jPanel6.setBounds(770, 220, 280, 150);
+        jPanel6.setBounds(770, 220, 266, 146);
 
         jPanel7.setBackground(new java.awt.Color(37, 34, 43));
 
         tfTituloR2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        tfTituloR2.setForeground(new java.awt.Color(255, 255, 255));
         tfTituloR2.setText("Titulo");
 
+        tfDescricaoR2.setForeground(new java.awt.Color(255, 255, 255));
         tfDescricaoR2.setText("Descrição");
 
+        tfPostadoR2.setForeground(new java.awt.Color(255, 255, 255));
         tfPostadoR2.setText("Postado por");
 
         jButton10.setBackground(new java.awt.Color(58, 45, 110));
@@ -530,7 +548,7 @@ public class Index extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel7);
-        jPanel7.setBounds(770, 390, 280, 150);
+        jPanel7.setBounds(770, 390, 266, 146);
 
         jButton4.setBackground(new java.awt.Color(58, 45, 110));
         jButton4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -622,7 +640,7 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        new CadastrarPodCast(logado).setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     public void atualizarAvaliados() {
