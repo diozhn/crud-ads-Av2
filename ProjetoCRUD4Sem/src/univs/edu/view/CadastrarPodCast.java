@@ -27,9 +27,10 @@ public class CadastrarPodCast extends javax.swing.JFrame {
     }
     
     public void preencherCampos(PodCast pc){
-        tfData.setText(pc.getNomePC());
+        tfTitulo.setText(pc.getNomePC());
         tfLink.setText(pc.getLinkPC());
         tfDescricao.setText(pc.getDescriptionPC());
+        tfData.setText(pc.getNomePC());
         this.pc = pc;
     }
     
@@ -141,6 +142,7 @@ public class CadastrarPodCast extends javax.swing.JFrame {
         tfDescricao.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         tfDescricao.setForeground(new java.awt.Color(143, 132, 186));
         tfDescricao.setToolTipText("Max. 250 caracteres.");
+        tfDescricao.setCaretColor(new java.awt.Color(37, 32, 56));
         jScrollPane1.setViewportView(tfDescricao);
 
         jLabel7.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
@@ -152,7 +154,7 @@ public class CadastrarPodCast extends javax.swing.JFrame {
         jLabel3.setText("Maximo de 250 caracteres.");
 
         boxCategoria.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        boxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        boxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Matemática", "Ciências", "Geografia", "Ciências exatas", "Ciências humanas", "Língua portuguesa", "Conhecimentos gerais", "Humor", "Outros" }));
 
         jLabel8.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(143, 132, 186));
@@ -294,6 +296,8 @@ public class CadastrarPodCast extends javax.swing.JFrame {
         pc.setAvaliacoesPC(0);
         
         repoPc.salvar(pc);
+        JOptionPane.showMessageDialog(null, "Podcast salvo!");
+        dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

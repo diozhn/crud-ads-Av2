@@ -28,6 +28,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             tfAdm.setVisible(false);
             jAdm.setVisible(false);
         }
+    usuario.setAdm(0);
     }
     
     public void preencherCampos(Usuario usuario){
@@ -152,7 +153,7 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         tfAdm.setText("Adm:");
 
         boxAreaInteresse.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        boxAreaInteresse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        boxAreaInteresse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Matemática", "Ciências", "Geografia", "Ciências exatas", "Ciências humanas", "Língua portuguesa", "Conhecimentos gerais", "Humor", "Outros" }));
         boxAreaInteresse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boxAreaInteresseActionPerformed(evt);
@@ -168,6 +169,8 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(143, 132, 186));
         jLabel8.setText("Senha:");
 
+        jAdm.setBackground(new java.awt.Color(26, 24, 34));
+        jAdm.setForeground(new java.awt.Color(143, 132, 186));
         jAdm.setText("Sim");
         jAdm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,9 +218,9 @@ public class CadastrarUsuario extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton3)
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
                 .addComponent(jButton5)
                 .addGap(288, 288, 288))
         );
@@ -285,9 +288,10 @@ public class CadastrarUsuario extends javax.swing.JFrame {
         usuario.setLogin(tfLogin.getText());
         usuario.setNomeUsuario(tfNome.getText());
         usuario.setSenha(tfSenha.getText());
-        usuario.setAdm(0);
+        usuario.setAreaInteresseUsuario((String) boxAreaInteresse.getSelectedItem());
         
         repo.salvar(usuario);
+        dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

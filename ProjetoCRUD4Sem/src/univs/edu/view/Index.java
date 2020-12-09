@@ -43,8 +43,10 @@ public class Index extends javax.swing.JFrame {
         atualizarAvaliados();
         if(logado.getAdm() == 1){
             jButton1.setVisible(true);
+            jButton11.setVisible(true);
         }else{
             jButton1.setVisible(false);
+            jButton11.setVisible(false);
         }
     }
 
@@ -94,6 +96,7 @@ public class Index extends javax.swing.JFrame {
         tfPostadoR2 = new javax.swing.JLabel();
         jButton10 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -144,7 +147,7 @@ public class Index extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(20, 340, 291, 35);
+        jButton1.setBounds(20, 290, 291, 35);
 
         jButton2.setBackground(new java.awt.Color(58, 45, 110));
         jButton2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -204,20 +207,19 @@ public class Index extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(6, 6, 6)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(tfPostado)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
-                        .addComponent(jButton5))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfPostado)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(tfDescricao))
-                            .addComponent(tfTitulo))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(tfDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton5))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(tfTitulo)
+                        .addGap(0, 219, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -231,8 +233,8 @@ public class Index extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(tfTitulo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfDescricao)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                        .addComponent(tfDescricao, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(tfPostado)))
                 .addContainerGap())
         );
@@ -266,20 +268,19 @@ public class Index extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(6, 6, 6)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(tfPostado1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
-                        .addComponent(jButton6))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfPostado1)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(tfDescricao1))
-                            .addComponent(tfTitulo1))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(tfDescricao1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton6))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(tfTitulo1)
+                        .addGap(0, 219, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -293,14 +294,14 @@ public class Index extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(tfTitulo1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfDescricao1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                        .addComponent(tfDescricao1, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(tfPostado1)))
                 .addContainerGap())
         );
 
         jPanel1.add(jPanel3);
-        jPanel3.setBounds(430, 220, 266, 146);
+        jPanel3.setBounds(430, 220, 280, 150);
 
         jPanel4.setBackground(new java.awt.Color(37, 34, 43));
 
@@ -328,20 +329,19 @@ public class Index extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(6, 6, 6)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(tfPostado2)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfPostado2)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(tfDescricao2, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton7))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(tfDescricao2))
-                            .addComponent(tfTitulo2))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(tfTitulo2)
+                        .addGap(0, 219, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -355,8 +355,8 @@ public class Index extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(tfTitulo2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfDescricao2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(tfDescricao2, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tfPostado2)))
                 .addContainerGap())
         );
@@ -390,20 +390,19 @@ public class Index extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(6, 6, 6)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(tfPostadoR)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
-                        .addComponent(jButton8))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfPostadoR)
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(tfDescricaoR))
-                            .addComponent(tfTituloR))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(tfDescricaoR, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton8))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(tfTituloR)
+                        .addGap(0, 219, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -417,14 +416,14 @@ public class Index extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(tfTituloR)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfDescricaoR)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                        .addComponent(tfDescricaoR, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tfPostadoR)))
                 .addContainerGap())
         );
 
         jPanel1.add(jPanel5);
-        jPanel5.setBounds(770, 50, 266, 146);
+        jPanel5.setBounds(770, 50, 280, 150);
 
         jPanel6.setBackground(new java.awt.Color(37, 34, 43));
 
@@ -452,20 +451,19 @@ public class Index extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(6, 6, 6)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(tfPostadoR1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
-                        .addComponent(jButton9))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfPostadoR1)
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(tfDescricaoR1))
-                            .addComponent(tfTituloR1))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(tfDescricaoR1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton9))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(tfTituloR1)
+                        .addGap(0, 219, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -479,14 +477,14 @@ public class Index extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(tfTituloR1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfDescricaoR1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                        .addComponent(tfDescricaoR1, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tfPostadoR1)))
                 .addContainerGap())
         );
 
         jPanel1.add(jPanel6);
-        jPanel6.setBounds(770, 220, 266, 146);
+        jPanel6.setBounds(770, 220, 280, 150);
 
         jPanel7.setBackground(new java.awt.Color(37, 34, 43));
 
@@ -514,41 +512,39 @@ public class Index extends javax.swing.JFrame {
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(6, 6, 6)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfTituloR2)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(tfPostadoR2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
-                        .addComponent(jButton10))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfPostadoR2)
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(tfDescricaoR2))
-                            .addComponent(tfTituloR2))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addComponent(tfDescricaoR2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton10)))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(tfTituloR2)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton10))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(tfTituloR2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfDescricaoR2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-                        .addComponent(tfPostadoR2)))
-                .addContainerGap())
+                        .addComponent(tfDescricaoR2, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfPostadoR2)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton10)
+                        .addGap(15, 15, 15))))
         );
 
         jPanel1.add(jPanel7);
-        jPanel7.setBounds(770, 390, 266, 146);
+        jPanel7.setBounds(770, 390, 280, 150);
 
         jButton4.setBackground(new java.awt.Color(58, 45, 110));
         jButton4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -562,6 +558,18 @@ public class Index extends javax.swing.JFrame {
         jPanel1.add(jButton4);
         jButton4.setBounds(20, 390, 291, 35);
 
+        jButton11.setBackground(new java.awt.Color(58, 45, 110));
+        jButton11.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButton11.setForeground(new java.awt.Color(143, 132, 183));
+        jButton11.setText("Editar podcasts");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton11);
+        jButton11.setBounds(20, 340, 291, 35);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -574,6 +582,7 @@ public class Index extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -625,7 +634,7 @@ public class Index extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         try {
-            Desktop.getDesktop().browse(linkR1);
+            Desktop.getDesktop().browse(linkR2);
         } catch (IOException ex) {
             Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -633,7 +642,7 @@ public class Index extends javax.swing.JFrame {
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         try {
-            Desktop.getDesktop().browse(linkR1);
+            Desktop.getDesktop().browse(linkR3);
         } catch (IOException ex) {
             Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -643,11 +652,15 @@ public class Index extends javax.swing.JFrame {
         new CadastrarPodCast(logado).setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        new PesquisaPodcastView(logado).setVisible(true);
+    }//GEN-LAST:event_jButton11ActionPerformed
+
     public void atualizarAvaliados() {
         List<PodCast> listaAvaliados = new ArrayList<>();
-        listaAvaliados = repoPC.listarAvaliados();
+        listaAvaliados = repoPC.listarAvaliados();                                  //Metodos que retornam pilhas ordenadas
         List<PodCast> listaRecomendados = new ArrayList<>();
-        listaRecomendados = repoPC.listarRecomendados(logado);
+        listaRecomendados = repoPC.listarRecomendados(logado); 
 
         if (listaAvaliados.size() <= 0) {
             JOptionPane.showMessageDialog(null, "Sem podcasts cadastrados!");
@@ -699,34 +712,34 @@ public class Index extends javax.swing.JFrame {
            
            
            
-           tfTituloR.setText(listaAvaliados.get(0).getNomePC());
-            tfDescricaoR.setText(listaAvaliados.get(0).getDescriptionPC());
-            user = repo.pesquisarPorId(listaAvaliados.get(0).getIdCadastrante());
+           tfTituloR.setText(listaRecomendados.get(0).getNomePC());
+            tfDescricaoR.setText(listaRecomendados.get(0).getDescriptionPC());
+            user = repo.pesquisarPorId(listaRecomendados.get(0).getIdCadastrante());
             tfPostadoR.setText("Postado por: " + user.getNomeUsuario());
             try {
-                URI link = new URI(listaAvaliados.get(0).getLinkPC());
+                URI link = new URI(listaRecomendados.get(0).getLinkPC());
                 linkR1 = link;
             } catch (URISyntaxException ex) {
                 JOptionPane.showMessageDialog(null, "Não foi possível abrir o link! Notifique o suporte para resolução de erros!");
             }
            
-           tfTituloR1.setText(listaAvaliados.get(1).getNomePC());
-            tfDescricaoR1.setText(listaAvaliados.get(1).getDescriptionPC());
-            user = repo.pesquisarPorId(listaAvaliados.get(1).getIdCadastrante());
+           tfTituloR1.setText(listaRecomendados.get(1).getNomePC());
+            tfDescricaoR1.setText(listaRecomendados.get(1).getDescriptionPC());
+            user = repo.pesquisarPorId(listaRecomendados.get(1).getIdCadastrante());
             tfPostadoR1.setText("Postado por: " + user.getNomeUsuario());
             try {
-                URI link = new URI(listaAvaliados.get(1).getLinkPC());
+                URI link = new URI(listaRecomendados.get(1).getLinkPC());
                 linkR2 = link;
             } catch (URISyntaxException ex) {
                 JOptionPane.showMessageDialog(null, "Não foi possível abrir o link! Notifique o suporte para resolução de erros!");
             }
            
-           tfTituloR2.setText(listaAvaliados.get(2).getNomePC());
-            tfDescricaoR2.setText(listaAvaliados.get(2).getDescriptionPC());
-            user = repo.pesquisarPorId(listaAvaliados.get(2).getIdCadastrante());
+           tfTituloR2.setText(listaRecomendados.get(2).getNomePC());
+            tfDescricaoR2.setText(listaRecomendados.get(2).getDescriptionPC());
+            user = repo.pesquisarPorId(listaRecomendados.get(2).getIdCadastrante());
             tfPostadoR2.setText("Postado por: " + user.getNomeUsuario());
             try {
-                URI link = new URI(listaAvaliados.get(2).getLinkPC());
+                URI link = new URI(listaRecomendados.get(2).getLinkPC());
                 linkR3 = link;
             } catch (URISyntaxException ex) {
                 JOptionPane.showMessageDialog(null, "Não foi possível abrir o link! Notifique o suporte para resolução de erros!");
@@ -749,6 +762,7 @@ public class Index extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

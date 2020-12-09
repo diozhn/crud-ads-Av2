@@ -3,20 +3,20 @@ package univs.edu.table;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-import univs.edu.model.Usuario;
+import univs.edu.model.PodCast;
 
-public class UsuarioTableModel extends AbstractTableModel {
+public class PodcastTableModel extends AbstractTableModel {
 
-    private List<Usuario> usuarios = new ArrayList<>();
-    private String[] colunas = {"Código" , "Nome Usuário", "Login", "Senha", "Área de interesse", "Adm (0=Sim/1=Não)"};
+    private List<PodCast> podcasts = new ArrayList<>();
+    private String[] colunas = {"Código" , "Título", "Descrição", "Data", "Avaliações", "Categoria", "Id do postador", "Link"};
 
-    public UsuarioTableModel(List<Usuario> usuarios) {
-        this.usuarios = usuarios;
+    public PodcastTableModel(List<PodCast> pcs) {
+        this.podcasts = pcs;
     }
 
     @Override
     public int getRowCount() {
-        return usuarios.size();
+        return podcasts.size();
     }
 
     @Override
@@ -26,20 +26,24 @@ public class UsuarioTableModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Usuario usuario = usuarios.get(rowIndex);
+        PodCast pc = podcasts.get(rowIndex);
         switch (columnIndex) {
             case 0:
-                return usuario.getIdUsuario();
+                return pc.getIdPC();
             case 1:
-                return usuario.getNomeUsuario();
+                return pc.getNomePC();
             case 2:
-                return usuario.getLogin();
+                return pc.getDescriptionPC();
             case 3:
-                return usuario.getSenha();
+                return pc.getDataPC();
             case 4:
-                return usuario.getAreaInteresseUsuario();
+                return pc.getAvaliacoesPC();
             case 5:
-                return usuario.getAdm();
+                return pc.getCategoriaPC();
+            case 6:
+                return pc.getIdCadastrante();
+            case 7:
+                return pc.getLinkPC();
         }
         return null;
     }
@@ -58,6 +62,10 @@ public class UsuarioTableModel extends AbstractTableModel {
                 return colunas[4];
             case 5:
                 return colunas[5];
+            case 6:
+                return colunas[6];
+            case 7:
+                return colunas[7];
 
         }
         return null;

@@ -23,7 +23,6 @@ import univs.edu.model.Usuario;
 import univs.edu.repository.AvaliacaoRepository;
 import univs.edu.repository.PodCastRepository;
 import univs.edu.repository.UsuarioRepository;
-import univs.edu.util.PodcastUtil;
 
 /**
  *
@@ -36,7 +35,7 @@ public class PesquisaPodcasts extends javax.swing.JFrame {
     PodCastRepository repo = new PodCastRepository();
     AvaliacaoRepository repoA = new AvaliacaoRepository();
     List<PodCast> pcs = new ArrayList<>();
-    List<PodCast> restante = new ArrayList<>();
+    List<PodCast> restante = new ArrayList<>();                                           //ArrayList
     URI link1;
     URI link2;
     URI link3;
@@ -53,7 +52,7 @@ public class PesquisaPodcasts extends javax.swing.JFrame {
         this.pcs = pc;
         atualizarPaineis();
         this.logado = usuario;
-        
+
     }
 
     public List<String> GetInformacoes(int id) {
@@ -71,8 +70,26 @@ public class PesquisaPodcasts extends javax.swing.JFrame {
         infos.add(pcs.get(id).getLinkPC());
         infos.add(null);
         infos.add(Integer.toString(pcs.get(id).getIdPC()));
-        
+
         return infos;
+    }
+
+    public String formatarDescricao(String texto) {
+        String textoFormatado = "<html>";
+        for (int i = 0; i < texto.length(); i++) {
+            textoFormatado += texto.charAt(i);
+            if (i % 70 == 0 && i != 0) {
+                if (i+1 < texto.length()) {
+                    if (texto.charAt(i + 1) != ' ') {
+                        textoFormatado += "-";
+                    }
+                    textoFormatado += "<br>";
+                }
+
+            }
+        }
+        textoFormatado += "</html>";
+        return textoFormatado;
     }
 
     public void atualizarPaineis() {
@@ -82,12 +99,15 @@ public class PesquisaPodcasts extends javax.swing.JFrame {
 
         if (pcs.size() >= 1) {
             tfTitulo1.setText(infos.get(0));
-            tfDescricao1.setText("Descrição: " + infos.get(1));
+            if (infos.get(1).length() > 30) {
+
+            }
+            tfDescricao1.setText(formatarDescricao(infos.get(1)));
             tfData1.setText("Data de postagem: " + infos.get(2));
             tfCategoria1.setText("Categoria: " + infos.get(3));
             tfAvaliacoes1.setText("Avaliações: " + infos.get(4));
             tfPostado1.setText("Postado por: " + infos.get(5));
-            if(infos.get(7) == "true"){
+            if (infos.get(7) == "true") {
                 btAvaliar2.setSelected(true);
             }
             try {
@@ -104,11 +124,11 @@ public class PesquisaPodcasts extends javax.swing.JFrame {
         if (pcs.size() >= 2) {
             infos = GetInformacoes(1);
             tfTitulo2.setText(infos.get(0));
-            tfDescricao2.setText("Descrição: " + infos.get(1));
-            tfData1.setText("Data de postagem: " + infos.get(2));
+            tfDescricao2.setText(formatarDescricao(infos.get(1)));
+            tfData2.setText("Data de postagem: " + infos.get(2));
             tfCategoria2.setText("Categoria: " + infos.get(3));
             tfAvaliacoes2.setText("Avaliações: " + infos.get(4));
-            tfPostado1.setText("Postado por: " + infos.get(5));
+            tfPostado2.setText("Postado por: " + infos.get(5));
             try {
                 URI link = new URI(infos.get(6));
                 link2 = link;
@@ -122,11 +142,11 @@ public class PesquisaPodcasts extends javax.swing.JFrame {
         if (pcs.size() >= 3) {
             infos = GetInformacoes(2);
             tfTitulo3.setText(infos.get(0));
-            tfDescricao3.setText("Descrição: " + infos.get(1));
+            tfDescricao3.setText(formatarDescricao(infos.get(1)));
             tfData3.setText("Data de postagem: " + infos.get(2));
             tfCategoria3.setText("Categoria: " + infos.get(3));
             tfAvaliacoes3.setText("Avaliações: " + infos.get(4));
-            tfPostado2.setText("Postado por: " + infos.get(5));
+            tfPostado3.setText("Postado por: " + infos.get(5));
             try {
                 URI link = new URI(infos.get(6));
                 link3 = link;
@@ -140,11 +160,11 @@ public class PesquisaPodcasts extends javax.swing.JFrame {
         if (pcs.size() >= 4) {
             infos = GetInformacoes(3);
             tfTitulo4.setText(infos.get(0));
-            tfDescricao4.setText("Descrição: " + infos.get(1));
+            tfDescricao4.setText(formatarDescricao(infos.get(1)));
             tfData4.setText("Data de postagem: " + infos.get(2));
             tfCategoria4.setText("Categoria: " + infos.get(3));
             tfAvaliacoes4.setText("Avaliações: " + infos.get(4));
-            tfPostado3.setText("Postado por: " + infos.get(5));
+            tfPostado4.setText("Postado por: " + infos.get(5));
             try {
                 URI link = new URI(infos.get(6));
                 link4 = link;
@@ -158,11 +178,11 @@ public class PesquisaPodcasts extends javax.swing.JFrame {
         if (pcs.size() >= 5) {
             infos = GetInformacoes(4);
             tfTitulo5.setText(infos.get(0));
-            tfDescricao5.setText("Descrição: " + infos.get(1));
+            tfDescricao5.setText(formatarDescricao(infos.get(1)));
             tfData5.setText("Data de postagem: " + infos.get(2));
             tfCategoria5.setText("Categoria: " + infos.get(3));
             tfAvaliacoes5.setText("Avaliações: " + infos.get(4));
-            tfPostado4.setText("Postado por: " + infos.get(5));
+            tfPostado5.setText("Postado por: " + infos.get(5));
             try {
                 URI link = new URI(infos.get(6));
                 link5 = link;
@@ -203,36 +223,36 @@ public class PesquisaPodcasts extends javax.swing.JFrame {
         tfAvaliacoes2 = new javax.swing.JLabel();
         tfCategoria2 = new javax.swing.JLabel();
         tfData2 = new javax.swing.JLabel();
-        tfDescricao2 = new javax.swing.JLabel();
         tfAbrir2 = new javax.swing.JButton();
         btAvaliar2 = new javax.swing.JButton();
+        tfDescricao2 = new javax.swing.JLabel();
         painel1 = new javax.swing.JPanel();
         tfTitulo1 = new javax.swing.JLabel();
         tfPostado1 = new javax.swing.JLabel();
         tfAvaliacoes1 = new javax.swing.JLabel();
         tfCategoria1 = new javax.swing.JLabel();
         tfData1 = new javax.swing.JLabel();
-        tfDescricao1 = new javax.swing.JLabel();
         tfAbrir = new javax.swing.JButton();
         jRadioButton7 = new javax.swing.JButton();
+        tfDescricao1 = new javax.swing.JLabel();
         painel4 = new javax.swing.JPanel();
         tfTitulo4 = new javax.swing.JLabel();
         tfPostado4 = new javax.swing.JLabel();
         tfAvaliacoes4 = new javax.swing.JLabel();
         tfCategoria4 = new javax.swing.JLabel();
         tfData4 = new javax.swing.JLabel();
-        tfDescricao4 = new javax.swing.JLabel();
         btAvaliar4 = new javax.swing.JButton();
         tfAbrir3 = new javax.swing.JButton();
+        tfDescricao4 = new javax.swing.JLabel();
         painel5 = new javax.swing.JPanel();
         tfTitulo5 = new javax.swing.JLabel();
         tfAvaliacoes5 = new javax.swing.JLabel();
         tfCategoria5 = new javax.swing.JLabel();
         tfData5 = new javax.swing.JLabel();
-        tfDescricao5 = new javax.swing.JLabel();
         tfAbrir4 = new javax.swing.JButton();
         btAvaliar5 = new javax.swing.JButton();
         tfPostado5 = new javax.swing.JLabel();
+        tfDescricao5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         tfPesquisa = new javax.swing.JTextField();
@@ -301,10 +321,10 @@ public class PesquisaPodcasts extends javax.swing.JFrame {
         });
         painel3.add(btAvaliar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 120, -1));
 
-        tfDescricao3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        tfDescricao3.setForeground(new java.awt.Color(219, 219, 219));
-        tfDescricao3.setText("Descrição");
-        painel3.add(tfDescricao3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+        tfDescricao3.setBackground(new java.awt.Color(255, 255, 255));
+        tfDescricao3.setForeground(new java.awt.Color(255, 255, 255));
+        tfDescricao3.setText("jLabel4");
+        painel3.add(tfDescricao3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 460, 100));
 
         painel2.setBackground(new java.awt.Color(37, 34, 43));
         painel2.setMinimumSize(new java.awt.Dimension(494, 235));
@@ -318,24 +338,19 @@ public class PesquisaPodcasts extends javax.swing.JFrame {
 
         tfPostado2.setForeground(new java.awt.Color(219, 219, 219));
         tfPostado2.setText("postado");
-        painel2.add(tfPostado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+        painel2.add(tfPostado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
 
         tfAvaliacoes2.setForeground(new java.awt.Color(219, 219, 219));
         tfAvaliacoes2.setText("avaliacoes");
-        painel2.add(tfAvaliacoes2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 300, 30));
+        painel2.add(tfAvaliacoes2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 300, 30));
 
         tfCategoria2.setForeground(new java.awt.Color(219, 219, 219));
         tfCategoria2.setText("Categoria");
-        painel2.add(tfCategoria2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+        painel2.add(tfCategoria2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
 
         tfData2.setForeground(new java.awt.Color(219, 219, 219));
         tfData2.setText("data");
-        painel2.add(tfData2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
-
-        tfDescricao2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        tfDescricao2.setForeground(new java.awt.Color(219, 219, 219));
-        tfDescricao2.setText("Descrição");
-        painel2.add(tfDescricao2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+        painel2.add(tfData2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
         tfAbrir2.setBackground(new java.awt.Color(58, 45, 110));
         tfAbrir2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -346,7 +361,7 @@ public class PesquisaPodcasts extends javax.swing.JFrame {
                 tfAbrir2ActionPerformed(evt);
             }
         });
-        painel2.add(tfAbrir2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, -1, -1));
+        painel2.add(tfAbrir2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, -1, -1));
 
         btAvaliar2.setBackground(new java.awt.Color(58, 45, 110));
         btAvaliar2.setForeground(new java.awt.Color(143, 132, 183));
@@ -356,7 +371,12 @@ public class PesquisaPodcasts extends javax.swing.JFrame {
                 btAvaliar2ActionPerformed(evt);
             }
         });
-        painel2.add(btAvaliar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 120, -1));
+        painel2.add(btAvaliar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 120, -1));
+
+        tfDescricao2.setBackground(new java.awt.Color(255, 255, 255));
+        tfDescricao2.setForeground(new java.awt.Color(255, 255, 255));
+        tfDescricao2.setText("jLabel4");
+        painel2.add(tfDescricao2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 460, 100));
 
         painel1.setBackground(new java.awt.Color(37, 34, 43));
         painel1.setPreferredSize(new java.awt.Dimension(494, 235));
@@ -384,11 +404,6 @@ public class PesquisaPodcasts extends javax.swing.JFrame {
         tfData1.setText("data");
         painel1.add(tfData1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
-        tfDescricao1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        tfDescricao1.setForeground(new java.awt.Color(219, 219, 219));
-        tfDescricao1.setText("Descrição");
-        painel1.add(tfDescricao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
-
         tfAbrir.setBackground(new java.awt.Color(58, 45, 110));
         tfAbrir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         tfAbrir.setForeground(new java.awt.Color(143, 132, 183));
@@ -403,7 +418,17 @@ public class PesquisaPodcasts extends javax.swing.JFrame {
         jRadioButton7.setBackground(new java.awt.Color(58, 45, 110));
         jRadioButton7.setForeground(new java.awt.Color(143, 132, 183));
         jRadioButton7.setText("Avaliar");
+        jRadioButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton7ActionPerformed(evt);
+            }
+        });
         painel1.add(jRadioButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 160, 120, -1));
+
+        tfDescricao1.setBackground(new java.awt.Color(255, 255, 255));
+        tfDescricao1.setForeground(new java.awt.Color(255, 255, 255));
+        tfDescricao1.setText("jLabel4");
+        painel1.add(tfDescricao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 460, 100));
 
         painel4.setBackground(new java.awt.Color(37, 34, 43));
         painel4.setMinimumSize(new java.awt.Dimension(494, 235));
@@ -431,11 +456,6 @@ public class PesquisaPodcasts extends javax.swing.JFrame {
         tfData4.setText("data");
         painel4.add(tfData4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
 
-        tfDescricao4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        tfDescricao4.setForeground(new java.awt.Color(219, 219, 219));
-        tfDescricao4.setText("Descrição");
-        painel4.add(tfDescricao4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
-
         btAvaliar4.setBackground(new java.awt.Color(58, 45, 110));
         btAvaliar4.setForeground(new java.awt.Color(143, 132, 183));
         btAvaliar4.setText("Avaliar");
@@ -444,7 +464,7 @@ public class PesquisaPodcasts extends javax.swing.JFrame {
                 btAvaliar4ActionPerformed(evt);
             }
         });
-        painel4.add(btAvaliar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, 120, -1));
+        painel4.add(btAvaliar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 120, -1));
 
         tfAbrir3.setBackground(new java.awt.Color(58, 45, 110));
         tfAbrir3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -455,7 +475,12 @@ public class PesquisaPodcasts extends javax.swing.JFrame {
                 tfAbrir3ActionPerformed(evt);
             }
         });
-        painel4.add(tfAbrir3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, -1, -1));
+        painel4.add(tfAbrir3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, -1, -1));
+
+        tfDescricao4.setBackground(new java.awt.Color(255, 255, 255));
+        tfDescricao4.setForeground(new java.awt.Color(255, 255, 255));
+        tfDescricao4.setText("jLabel4");
+        painel4.add(tfDescricao4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 460, 100));
 
         painel5.setBackground(new java.awt.Color(37, 34, 43));
         painel5.setMinimumSize(new java.awt.Dimension(494, 235));
@@ -479,11 +504,6 @@ public class PesquisaPodcasts extends javax.swing.JFrame {
         tfData5.setText("data");
         painel5.add(tfData5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, -1, -1));
 
-        tfDescricao5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        tfDescricao5.setForeground(new java.awt.Color(219, 219, 219));
-        tfDescricao5.setText("Descrição");
-        painel5.add(tfDescricao5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, -1));
-
         tfAbrir4.setBackground(new java.awt.Color(58, 45, 110));
         tfAbrir4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         tfAbrir4.setForeground(new java.awt.Color(143, 132, 183));
@@ -493,7 +513,7 @@ public class PesquisaPodcasts extends javax.swing.JFrame {
                 tfAbrir4ActionPerformed(evt);
             }
         });
-        painel5.add(tfAbrir4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, -1, -1));
+        painel5.add(tfAbrir4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, -1, -1));
 
         btAvaliar5.setBackground(new java.awt.Color(58, 45, 110));
         btAvaliar5.setForeground(new java.awt.Color(143, 132, 183));
@@ -503,11 +523,16 @@ public class PesquisaPodcasts extends javax.swing.JFrame {
                 btAvaliar5ActionPerformed(evt);
             }
         });
-        painel5.add(btAvaliar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 120, -1));
+        painel5.add(btAvaliar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 120, -1));
 
         tfPostado5.setForeground(new java.awt.Color(219, 219, 219));
         tfPostado5.setText("postado");
         painel5.add(tfPostado5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, -1, -1));
+
+        tfDescricao5.setBackground(new java.awt.Color(255, 255, 255));
+        tfDescricao5.setForeground(new java.awt.Color(255, 255, 255));
+        tfDescricao5.setText("jLabel4");
+        painel5.add(tfDescricao5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 460, 100));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -551,14 +576,11 @@ public class PesquisaPodcasts extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(painel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(painel2, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(6, 6, 6)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(painel2, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addComponent(painel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -623,6 +645,9 @@ public class PesquisaPodcasts extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Pesquisar:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -630,16 +655,15 @@ public class PesquisaPodcasts extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addContainerGap(32, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(7, 7, 7)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(586, Short.MAX_VALUE))
+                .addContainerGap(576, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createSequentialGroup()
@@ -659,11 +683,12 @@ public class PesquisaPodcasts extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3)
-                    .addComponent(jLabel3))
+                    .addComponent(jButton3))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -685,10 +710,11 @@ public class PesquisaPodcasts extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        new PesquisaPodcasts(repo.listarPodCast(),logado).setVisible(true); 
+        new PesquisaPodcasts(repo.listarPodCast(), logado).setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -709,7 +735,7 @@ public class PesquisaPodcasts extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        Queue<PodCast> restanteQueue = new LinkedList<>();
+        Queue<PodCast> restanteQueue = new LinkedList<>();                                  //Fila
 
         for (int i = 0; i < pcs.size(); i++) {
             restanteQueue.offer(pcs.get(i));
@@ -818,6 +844,17 @@ public class PesquisaPodcasts extends javax.swing.JFrame {
             Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_tfAbrir2ActionPerformed
+
+    private void jRadioButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton7ActionPerformed
+        Avaliacao av = new Avaliacao();
+        av.setIdPodcast(pcs.get(0).getIdPC());
+        av.setIdUsuario(logado.getIdUsuario());
+        repoA.salvar(av);
+        PodCast pc = new PodCast();
+        pc = pcs.get(0);
+        pc.setAvaliacoesPC(pc.getAvaliacoesPC() + 1);
+        repo.salvar(pc);
+    }//GEN-LAST:event_jRadioButton7ActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
